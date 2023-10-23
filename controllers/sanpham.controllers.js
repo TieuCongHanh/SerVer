@@ -21,15 +21,12 @@ exports.list = async (req, res, next) => {
 // Tính tổng số người dùng
 let totalSP = await myMD.sanphamModel.find(timkiemSP).countDocuments();
 
-// Tính tổng số người dùng trên trang hiện tại
-let currentPageTotal = start + list.length;
-
     let countlist = await myMD.sanphamModel.find(timkiemSP);
     let count = countlist.length / perPage;
     count = Math.ceil(count);
 
     console.log(list);
-    res.render('sanpham/list', { listL: list, countPage: count , req: req , msg: msg,by : by, order :order,totalSP: totalSP,currentPageTotal:currentPageTotal});
+    res.render('sanpham/list', { listL: list, countPage: count , req: req , msg: msg,by : by, order :order,totalSP: totalSP});
 }
 exports.in = async (req, res, next) => {
     try {
